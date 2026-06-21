@@ -1,351 +1,685 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Consulta de Valores · Aviso ao Cidadão</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magre Ecopart | Sucata, Reciclagem de Metais e Peças Usadas em Vila Velha/ES</title>
+  <meta name="description" content="Magre Ecopart — comércio de peças e acessórios usados para veículos, compra de sucata metálica e não-metálica e recuperação de materiais em Vila Velha/ES. Empresa ativa e regularmente registrada." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.seudominio.com.br/" />
+
+  <!-- ====================================================================== -->
+  <!--  SCRIPTS DE RASTREAMENTO                                                -->
+  <!--  >>> INSIRA AQUI O GOOGLE TAG MANAGER (parte do <head>) <<<             -->
+  <!--  Substitua GTM-XXXXXXX pelo seu container ID.                           -->
+  <!--
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  -->
+  <!--  >>> INSIRA AQUI O GOOGLE ADS / GA4 (gtag.js) SE NÃO USAR GTM <<<        -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXXX');
+  </script>
+  -->
+  <!-- ====================================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    /* ===================== TOKENS / RESET ============================= */
+    :root{
+      --base:#EFF2EC;        /* base clara esverdeada */
+      --white:#FBFCFA;       /* cartões               */
+      --ink:#1B221C;         /* grafite verde / texto */
+      --ink-soft:#586056;    /* texto secundário      */
+      --green:#2F7D4E;       /* verde reciclagem      */
+      --green-deep:#1F5E39;  /* verde escuro          */
+      --steel:#5E7065;       /* aço / metal           */
+      --line:#D7DDCF;        /* hairlines             */
+      --dark:#141A15;        /* rodapé dark           */
+      --dark-soft:#1F271F;
+      --dark-line:#33402F;
+      --dark-text:#B8C2B2;
+      --maxw:1160px;
+      --radius:4px;
+      --shadow:0 16px 46px -22px rgba(27,34,28,.45);
     }
 
-    body {
-      background: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{
+      font-family:'Barlow',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--ink);background:var(--base);line-height:1.62;font-weight:400;overflow-x:hidden;
     }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4{font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;line-height:1.05;letter-spacing:.005em;text-transform:uppercase}
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 
-    /* Card principal com borda sutil laranja/bege */
-    .card {
-      max-width: 480px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 1.5rem;
-      border: 3px solid #fde0c5;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
-    }
+    .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--green-deep);font-family:'Barlow Condensed',sans-serif}
+    .eyebrow::before{content:"";width:26px;height:3px;background:var(--green)}
 
-    /* Cabeçalho Verde Escuro */
-    .header {
-      background-color: #03695d;
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      position: relative;
-    }
+    .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:1rem;cursor:pointer;border:none;padding:14px 30px;border-radius:var(--radius);transition:.22s ease}
+    .btn-primary{background:var(--green);color:#fff}
+    .btn-primary:hover{background:var(--green-deep)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+    .btn-ghost:hover{background:var(--ink);color:#fff}
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    /* ===================== HEADER ===================================== */
+    header.site{position:sticky;top:0;z-index:50;background:rgba(239,242,236,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand .mark{width:40px;height:40px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.5rem;line-height:1}
+    .brand .txt{display:flex;flex-direction:column;line-height:1}
+    .brand .name{font-family:'Barlow Condensed',sans-serif;font-size:1.32rem;font-weight:700;letter-spacing:.02em}
+    .brand .sub{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green-deep);margin-top:4px;font-weight:600;font-family:'Barlow',sans-serif}
+    .menu{display:flex;align-items:center;gap:26px}
+    .menu a{font-size:.98rem;color:var(--ink-soft);transition:color .2s;position:relative;font-weight:500}
+    .menu a:hover{color:var(--ink)}
+    .menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:3px;background:var(--green);transition:width .25s}
+    .menu a:not(.btn):hover::after{width:100%}
+    .menu .btn{padding:10px 20px;font-size:.92rem}
+    .burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+    .burger span{width:24px;height:2px;background:var(--ink);transition:.3s}
 
-    .icon-shield {
-      background: #fca311;
-      border-radius: 8px;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    /* ===================== HERO ======================================= */
+    .hero{position:relative;padding:94px 0 102px;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,var(--line) 0,var(--line) 1px,transparent 1px,transparent 22px);opacity:.5;-webkit-mask-image:radial-gradient(circle at 78% 25%,#000,transparent 65%);mask-image:radial-gradient(circle at 78% 25%,#000,transparent 65%);pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:58px;align-items:center}
+    .hero h1{font-size:clamp(2.8rem,6vw,5rem);margin:20px 0 20px}
+    .hero h1 span{color:var(--green-deep)}
+    .hero p.lead{font-size:1.14rem;color:var(--ink-soft);max-width:50ch;margin-bottom:32px}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+    .hero-aside{position:relative;border:1px solid var(--line);background:var(--white);border-radius:var(--radius);padding:34px 32px;box-shadow:var(--shadow);border-top:4px solid var(--green)}
+    .hero-aside h3{font-size:1.4rem;margin-bottom:4px}
+    .hero-aside .since{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green-deep);margin-bottom:18px;font-family:'Barlow',sans-serif;font-weight:600}
+    .fact{display:flex;gap:14px;padding:11px 0;border-top:1px solid var(--line);font-size:.93rem}
+    .fact:first-of-type{border-top:none}
+    .fact .k{color:var(--ink-soft);min-width:80px}
+    .fact .v{font-weight:600}
 
-    .header-titles {
-      display: flex;
-      flex-direction: column;
-    }
+    /* ===================== SECTION BASE =============================== */
+    .section{padding:90px 0}
+    .section-head{max-width:680px;margin-bottom:52px}
+    .section-head h2{font-size:clamp(2.2rem,4.4vw,3.2rem);margin:14px 0 14px}
+    .section-head p{color:var(--ink-soft);font-size:1.06rem}
 
-    .header-subtitle {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
-    }
+    /* ===================== SOBRE ====================================== */
+    .about{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .about-grid p{color:var(--ink-soft);margin-bottom:16px}
+    .reg-card{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:var(--base);border-left:4px solid var(--green)}
+    .reg-card h4{font-size:1.15rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+    .reg-card h4 .dot{width:8px;height:8px;border-radius:50%;background:#2f9e44;box-shadow:0 0 0 4px rgba(47,158,68,.15)}
+    .reg-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px dashed var(--line);font-size:.92rem}
+    .reg-row:first-of-type{border-top:none}
+    .reg-row .lbl{color:var(--ink-soft)}
+    .reg-row .val{font-weight:600;text-align:right}
 
-    .header-title {
-      font-size: 1rem;
-      font-weight: 700;
-    }
+    /* ===================== SERVIÇOS ================================== */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:transform .3s ease,box-shadow .3s ease;position:relative}
+    .card::before{content:"";position:absolute;top:0;left:0;width:0;height:3px;background:var(--green);transition:width .3s ease}
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .card:hover::before{width:100%}
+    .card h3{font-size:1.3rem;margin-bottom:8px}
+    .card p{color:var(--ink-soft);font-size:.95rem;margin-bottom:14px}
+    .card .tags{font-size:.78rem;letter-spacing:.03em;color:var(--green-deep);border-top:1px solid var(--line);padding-top:12px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
 
-    .ativo-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #fca311;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+    /* ===================== PROCESSO ================================== */
+    .process{background:var(--ink);color:#fff}
+    .process .eyebrow{color:#7fd6a0}
+    .process .eyebrow::before{background:#7fd6a0}
+    .process .section-head h2{color:#fff}
+    .process .section-head p{color:var(--dark-text)}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .step{border-top:3px solid var(--dark-line);padding-top:20px}
+    .step .n{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:2.6rem;color:#7fd6a0;line-height:1;margin-bottom:10px}
+    .step h3{color:#fff;font-size:1.25rem;margin-bottom:8px}
+    .step p{color:var(--dark-text);font-size:.93rem}
 
-    .ativo-dot {
-      width: 8px;
-      height: 8px;
-      background-color: #fca311;
-      border-radius: 50%;
-    }
+    /* ===================== CONTATO =================================== */
+    .contact{background:var(--white);border-top:1px solid var(--line)}
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:start}
+    .info-block{padding:18px 0;border-bottom:1px solid var(--line)}
+    .info-block:first-child{padding-top:0}
+    .info-block .label{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep);margin-bottom:6px;font-weight:600;font-family:'Barlow Condensed',sans-serif}
+    .info-block .data{font-size:1.05rem;font-weight:500}
+    .info-block .data a:hover{color:var(--green-deep)}
+    form{display:grid;gap:16px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field label{font-size:.86rem;color:var(--ink-soft)}
+    .field input,.field textarea{font-family:inherit;font-size:1rem;color:var(--ink);background:var(--base);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px;transition:border-color .2s,box-shadow .2s}
+    .field input:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(47,125,78,.16)}
+    .field textarea{resize:vertical;min-height:120px}
+    .consent{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;color:var(--ink-soft)}
+    .consent input{margin-top:4px}
 
-    /* Detalhe Laranja abaixo do header */
-    .header-border {
-      height: 4px;
-      background-color: #fca311;
-      width: 40%;
-      margin: 0 auto;
-    }
+    /* ===================== FOOTER (DARK) ============================= */
+    footer.site{background:var(--dark);color:var(--dark-text);padding:64px 0 28px}
+    .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:46px;margin-bottom:42px}
+    footer .brand .name{color:#fff}
+    footer .brand .sub{color:#7fd6a0}
+    footer .brand .mark{background:var(--dark-soft)}
+    .foot-legal{margin-top:18px;font-size:.9rem;line-height:1.85}
+    .foot-legal strong{color:#fff;font-weight:600}
+    .foot-status{display:inline-flex;align-items:center;gap:9px;margin-top:18px;font-size:.84rem;color:#a7e0bd;border:1px solid var(--dark-line);padding:8px 14px;border-radius:40px}
+    .foot-status .dot{width:8px;height:8px;border-radius:50%;background:#5fd07f;box-shadow:0 0 0 4px rgba(95,208,127,.18)}
+    .foot-col h5{color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.92rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+    .foot-col a,.foot-col button{display:block;color:var(--dark-text);font-size:.94rem;margin-bottom:11px;background:none;border:none;font-family:inherit;cursor:pointer;text-align:left;padding:0;transition:color .2s}
+    .foot-col a:hover,.foot-col button:hover{color:#7fd6a0}
+    .foot-bottom{border-top:1px solid var(--dark-line);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#828c7c}
 
-    /* Conteúdo interno */
-    .card-inner {
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
+    /* ===================== MODAIS ==================================== */
+    .modal-overlay{position:fixed;inset:0;z-index:200;display:none;background:rgba(20,26,21,.64);backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:24px}
+    .modal-overlay.open{display:flex}
+    .modal{background:var(--white);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;border-radius:var(--radius);box-shadow:0 30px 80px -20px rgba(0,0,0,.5);padding:42px 44px;position:relative;border-top:4px solid var(--green)}
+    .modal h3{font-size:1.9rem;margin-bottom:4px}
+    .modal .modal-sub{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-deep);margin-bottom:22px;font-weight:600;font-family:'Barlow',sans-serif}
+    .modal h4{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:700;margin:22px 0 8px;color:var(--ink);text-transform:uppercase}
+    .modal p,.modal li{color:var(--ink-soft);font-size:.95rem;margin-bottom:12px}
+    .modal ul{padding-left:20px}
+    .modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--base);cursor:pointer;font-size:1.2rem;color:var(--ink);line-height:1;transition:.2s}
+    .modal-close:hover{background:var(--ink);color:#fff}
 
-    /* Ícone de Check Central */
-    .check-circle {
-      width: 70px;
-      height: 70px;
-      background-color: #009879;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-    }
+    /* ===================== COOKIE BANNER ============================= */
+    .cookie{position:fixed;left:18px;right:18px;bottom:18px;z-index:150;background:var(--dark);color:var(--dark-text);border:1px solid var(--dark-line);border-radius:var(--radius);padding:20px 24px;box-shadow:0 20px 50px -15px rgba(0,0,0,.5);display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:space-between;max-width:880px;margin:0 auto;transform:translateY(150%);transition:transform .4s ease}
+    .cookie.show{transform:translateY(0)}
+    .cookie p{font-size:.92rem;flex:1;min-width:240px}
+    .cookie p a{color:#7fd6a0;text-decoration:underline;cursor:pointer}
+    .cookie-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .cookie .btn-primary{background:var(--green)}
+    .cookie .btn-ghost{color:var(--dark-text);border-color:var(--dark-line)}
+    .cookie .btn-ghost:hover{background:var(--dark-soft);color:#fff}
 
-    /* Badge "Consulta Gratuita" */
-    .badge-consulta {
-      display: inline-block;
-      background: #fcb77a;
-      color: #000;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      padding: 0.4rem 1.2rem;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
+    /* ===================== RESPONSIVO ================================ */
+    @media (max-width:920px){.steps{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:880px){
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .foot-grid{grid-template-columns:1fr;gap:34px}
+      .menu{position:fixed;inset:74px 0 auto 0;background:var(--base);flex-direction:column;align-items:flex-start;gap:0;padding:10px 22px 22px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:transform .3s ease;box-shadow:var(--shadow)}
+      .menu.open{transform:translateY(0)}
+      .menu a{padding:14px 0;width:100%;border-bottom:1px solid var(--line)}
+      .menu .btn{margin-top:12px;width:100%;text-align:center}
+      .burger{display:flex}
+      .section{padding:62px 0}
+      .hero{padding:58px 0 66px}
+      .modal{padding:32px 24px}
     }
+    @media (max-width:560px){.cards,.steps{grid-template-columns:1fr}}
 
-    /* Títulos e Textos */
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #112d4e;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .underline-orange {
-      border-bottom: 4px solid #fca311;
-      padding-bottom: 2px;
-    }
-
-    .description {
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
-
-    /* Botão Principal com Glow */
-    .btn-consultar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      width: 100%;
-      background-color: #009879;
-      border: none;
-      padding: 1.2rem;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: white;
-      border-radius: 12px;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 0 25px rgba(0, 152, 121, 0.4);
-      transition: all 0.3s;
-      margin-bottom: 1rem;
-    }
-
-    .btn-consultar:hover {
-      transform: scale(0.98);
-      box-shadow: 0 0 15px rgba(0, 152, 121, 0.6);
-    }
-
-    /* Rodapé Seguro */
-    .footer-safe {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      color: #374151;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Box Plataforma Independente */
-    .info-box {
-      background: #f0f7f6;
-      border-left: 4px solid #009879;
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 0.8rem;
-      color: #374151;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    /* Links do rodapé */
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .footer-links a {
-      color: #9ca3af;
-      text-decoration: none;
-      font-size: 0.7rem;
-      transition: 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #4b5563;
-    }
-
-    /* Páginas Legais */
-    .legal-page {
-      padding: 2rem;
-    }
-    .legal-page h1 { font-size: 1.5rem; color: #03695d; }
-    .legal-page h2 { font-size: 1.1rem; color: #112d4e; margin: 1rem 0 0.5rem; }
-    .legal-page p { font-size: 0.9rem; color: #4b5563; margin-bottom: 0.5rem; }
-    
-    .btn-back {
-      background: #f0f7f6;
-      padding: 0.6rem 1.5rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      color: #03695d;
-      margin-top: 1.5rem;
-    }
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--green-deep);outline-offset:3px}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   </style>
 </head>
 <body>
-  <div id="app"></div>
 
-  <script>
-    let currentView = 'home';
-    const DESTINO_URL = 'https://bright-file-beam.lovable.app/funil';
+  <!-- GTM noscript (insira quando ativar o GTM) -->
+  <!--
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  -->
 
-    const politicaHTML = `
-      <div class="card">
-        <div class="legal-page">
-          <h1>Política de Privacidade</h1>
-          <p><strong>Última atualização:</strong> 29/05/2026</p>
-          <h2>1. Quem somos</h2>
-          <p>Plataforma independente com caráter informativo e educativo.</p>
-          <button class="btn-back" id="backBtn">← Voltar</button>
-        </div>
-      </div>
-    `;
+  <!-- ======================= HEADER ============================= -->
+  <header class="site">
+    <div class="wrap nav">
+      <a href="#topo" class="brand" aria-label="Magre Ecopart - início">
+        <span class="mark" aria-hidden="true">♺</span>
+        <span class="txt">
+          <span class="name">Magre Ecopart</span>
+          <span class="sub">Sucata &amp; Reciclagem</span>
+        </span>
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#sobre">A empresa</a>
+        <a href="#servicos">O que fazemos</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#contato">Contato</a>
+        <a href="#contato" class="btn btn-primary">Vender sucata</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    const termosHTML = `
-      <div class="card">
-        <div class="legal-page">
-          <h1>Termos de Uso</h1>
-          <p><strong>Última atualização:</strong> 29/05/2026</p>
-          <h2>1. Aceitação</h2>
-          <p>Ao acessar este site, você declara ter lido e aceitado estes Termos.</p>
-          <button class="btn-back" id="backBtn">← Voltar</button>
-        </div>
-      </div>
-    `;
+  <main id="topo">
 
-    const homeHTML = `
-      <div class="card">
-        <div class="header">
-          <div class="header-left">
-            <div class="icon-shield">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
-            </div>
-            <div class="header-titles">
-              <span class="header-subtitle">Comunicado</span>
-              <span class="header-title">Aviso ao Cidadão</span>
-            </div>
-          </div>
-          <div class="ativo-badge">
-            <div class="ativo-dot"></div> ATIVO
-          </div>
-        </div>
-        <div class="header-border"></div>
-
-        <div class="card-inner">
-          <div class="check-circle">
-            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          </div>
-          
-          <div class="badge-consulta">CONSULTA GRATUITA</div>
-          
-          <h1>Existem valores liberados no seu <span class="underline-orange">CPF?</span></h1>
-          
-          <p class="description">
-            Descubra em segundos se há quantias disponíveis para resgate vinculadas ao seu CPF.
+    <!-- ======================= HERO ============================= -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Vila Velha / ES · Sucata e reciclagem</span>
+          <h1>Sucata, reciclagem de metais e <span>peças usadas</span>.</h1>
+          <p class="lead">
+            A Magre Ecopart compra sucata metálica e não-metálica, comercializa peças e
+            acessórios usados para veículos e atua na recuperação de materiais — dando
+            destino útil ao que ainda tem valor.
           </p>
-          
-          <a href="${DESTINO_URL}" class="btn-consultar">
-            CONSULTAR AGORA 
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          
-          <div class="footer-safe">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#009879" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            Conexão segura · LGPD em conformidade
+          <div class="hero-cta">
+            <a href="#servicos" class="btn btn-primary">O que fazemos</a>
+            <a href="#contato" class="btn btn-ghost">Falar com a empresa</a>
           </div>
-          
-          <div class="info-box">
-            Plataforma independente. Nenhum dado sensível é solicitado.
+        </div>
+
+        <aside class="hero-aside">
+          <h3>Empresa registrada</h3>
+          <p class="since">Sucata e reciclagem · Porte ME</p>
+          <div class="fact"><span class="k">Razão Social</span><span class="v">Comércio de Sucata Magre Ecopart LTDA</span></div>
+          <div class="fact"><span class="k">CNPJ</span><span class="v">66.889.760/0001-00</span></div>
+          <div class="fact"><span class="k">Cidade</span><span class="v">Vila Velha / ES</span></div>
+          <div class="fact"><span class="k">Situação</span><span class="v">Ativa</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ======================= SOBRE ============================= -->
+    <section class="section about" id="sobre">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">A empresa</span>
+          <h2>Reciclagem que gera valor.</h2>
+          <p>
+            Atuamos na compra e comércio de sucatas e resíduos, na recuperação de materiais
+            metálicos e na venda de peças usadas para veículos automotores.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <p>
+              A <strong>Magre Ecopart</strong> (Comércio de Sucata Magre Ecopart LTDA) é uma empresa
+              sediada em Vila Velha, no Espírito Santo, dedicada ao comércio de sucatas e resíduos
+              metálicos e não-metálicos, à recuperação de materiais e à venda de peças e acessórios
+              usados para veículos.
+            </p>
+            <p>
+              Compramos sucata de empresas e do público, fazemos a triagem e damos o destino
+              correto aos materiais, contribuindo para a cadeia de reciclagem e o reaproveitamento
+              de recursos. A empresa é administrada por seus sócios, Diego Evangelista Motta e
+              Edson Magre dos Santos.
+            </p>
+            <p>
+              A operação é conduzida de forma regular e transparente, com os dados cadastrais da
+              empresa disponíveis publicamente para consulta.
+            </p>
           </div>
 
-          <div class="footer-links">
-            <a href="#" id="linkPolitica">Política de Privacidade</a>
-            <a href="#" id="linkTermos">Termos de Uso</a>
+          <div class="reg-card">
+            <h4><span class="dot" aria-hidden="true"></span> Dados cadastrais</h4>
+            <div class="reg-row"><span class="lbl">Razão Social</span><span class="val">Comércio de Sucata Magre Ecopart LTDA</span></div>
+            <div class="reg-row"><span class="lbl">Nome Fantasia</span><span class="val">Magre Ecopart</span></div>
+            <div class="reg-row"><span class="lbl">CNPJ</span><span class="val">66.889.760/0001-00</span></div>
+            <div class="reg-row"><span class="lbl">Natureza Jurídica</span><span class="val">Soc. Empresária Limitada</span></div>
+            <div class="reg-row"><span class="lbl">Porte</span><span class="val">Microempresa (ME)</span></div>
+            <div class="reg-row"><span class="lbl">Situação</span><span class="val">Ativa</span></div>
           </div>
         </div>
       </div>
-    `;
+    </section>
 
-    function render() {
-      const root = document.getElementById('app');
-      if (!root) return;
+    <!-- ======================= SERVIÇOS ============================= -->
+    <section class="section" id="servicos">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">O que fazemos</span>
+          <h2>Sucata, reciclagem e peças usadas.</h2>
+          <p>
+            As frentes abaixo correspondem às atividades de comércio e recuperação de materiais
+            registradas para a empresa.
+          </p>
+        </div>
 
-      if (currentView === 'home') {
-        root.innerHTML = homeHTML;
-        
-        const linkPolitica = document.getElementById('linkPolitica');
-        const linkTermos = document.getElementById('linkTermos');
+        <div class="cards">
+          <article class="card">
+            <h3>Peças e acessórios usados</h3>
+            <p>Comércio a varejo de peças e acessórios usados para veículos automotores.</p>
+            <div class="tags">CNAE 45.30-7-04</div>
+          </article>
+          <article class="card">
+            <h3>Sucata metálica</h3>
+            <p>Compra e comércio atacadista de resíduos e sucatas metálicos de diversos tipos.</p>
+            <div class="tags">CNAE 46.87-7-03</div>
+          </article>
+          <article class="card">
+            <h3>Sucata não-metálica</h3>
+            <p>Comércio atacadista de resíduos e sucatas não-metálicos (exceto papel e papelão).</p>
+            <div class="tags">CNAE 46.87-7-02</div>
+          </article>
+          <article class="card">
+            <h3>Recuperação de alumínio</h3>
+            <p>Recuperação de sucatas de alumínio para reinserção na cadeia produtiva.</p>
+            <div class="tags">CNAE 38.31-9-01</div>
+          </article>
+          <article class="card">
+            <h3>Recuperação de metais</h3>
+            <p>Recuperação de materiais metálicos diversos, exceto alumínio.</p>
+            <div class="tags">CNAE 38.31-9-99</div>
+          </article>
+          <article class="card">
+            <h3>Coleta e triagem</h3>
+            <p>Recebimento, triagem e organização dos materiais para o correto encaminhamento.</p>
+            <div class="tags">Apoio à reciclagem</div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-        if (linkPolitica) linkPolitica.addEventListener('click', (e) => { e.preventDefault(); currentView = 'politica'; render(); });
-        if (linkTermos) linkTermos.addEventListener('click', (e) => { e.preventDefault(); currentView = 'termos'; render(); });
-      } 
-      else if (currentView === 'politica' || currentView === 'termos') {
-        root.innerHTML = currentView === 'politica' ? politicaHTML : termosHTML;
-        const backBtn = document.getElementById('backBtn');
-        if (backBtn) backBtn.addEventListener('click', () => { currentView = 'home'; render(); });
-      }
+    <!-- ======================= PROCESSO ============================= -->
+    <section class="section process" id="processo">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Vender sua sucata é simples.</h2>
+          <p>Um fluxo direto, do contato ao pagamento.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="n">01</div>
+            <h3>Contato</h3>
+            <p>Você fala com a gente e informa o tipo e a quantidade de material.</p>
+          </div>
+          <div class="step">
+            <div class="n">02</div>
+            <h3>Avaliação</h3>
+            <p>Avaliamos o material e alinhamos as condições conforme o tipo de sucata.</p>
+          </div>
+          <div class="step">
+            <div class="n">03</div>
+            <h3>Pesagem</h3>
+            <p>O material é recebido e pesado de forma transparente.</p>
+          </div>
+          <div class="step">
+            <div class="n">04</div>
+            <h3>Pagamento</h3>
+            <p>Concluída a pesagem, fechamos o negócio conforme o combinado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTATO ============================= -->
+    <section class="section contact" id="contato">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Atendimento</span>
+          <h2>Fale com a Magre Ecopart.</h2>
+          <p>Use os dados abaixo ou envie uma mensagem pelo formulário. Retornaremos o contato.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <div class="info-block">
+              <div class="label">Endereço</div>
+              <div class="data">
+                Rua Eduardo Fairich, 209<br />
+                Nossa Senhora da Penha — Vila Velha / ES<br />
+                CEP 29110-100
+              </div>
+            </div>
+            <div class="info-block">
+              <div class="label">Telefone</div>
+              <!-- ⚠️ SUBSTITUA pelo telefone real verificável (exigência do Google Ads) -->
+              <div class="data"><a href="tel:+5527992000000">(27) 99200-0000</a></div>
+            </div>
+            <div class="info-block">
+              <div class="label">E-mail</div>
+              <!-- ⚠️ SUBSTITUA pelo e-mail real verificável (exigência do Google Ads) -->
+              <div class="data"><a href="mailto:contato@magreecopart.com.br">contato@magreecopart.com.br</a></div>
+            </div>
+            <div class="info-block">
+              <div class="label">Empresa</div>
+              <div class="data">Comércio de Sucata Magre Ecopart LTDA<br />CNPJ 66.889.760/0001-00</div>
+            </div>
+          </div>
+
+          <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');">
+            <div class="field">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="field">
+              <label for="tel">Telefone / WhatsApp</label>
+              <input type="tel" id="tel" name="tel" placeholder="(27) 90000-0000" />
+            </div>
+            <div class="field">
+              <label for="msg">Sua mensagem</label>
+              <textarea id="msg" name="msg" placeholder="Conte o tipo de material ou a peça que você procura." required></textarea>
+            </div>
+            <label class="consent">
+              <input type="checkbox" required />
+              <span>Li e concordo com a Política de Privacidade e autorizo o contato sobre minha solicitação, conforme a LGPD.</span>
+            </label>
+            <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================= FOOTER (DARK) ============================= -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="brand">
+            <span class="mark" aria-hidden="true">♺</span>
+            <span class="txt">
+              <span class="name">Magre Ecopart</span>
+              <span class="sub">Sucata &amp; Reciclagem</span>
+            </span>
+          </div>
+          <div class="foot-legal">
+            <strong>Comércio de Sucata Magre Ecopart LTDA</strong><br />
+            CNPJ: 66.889.760/0001-00<br />
+            Rua Eduardo Fairich, 209<br />
+            Nossa Senhora da Penha — Vila Velha / ES — CEP 29110-100<br />
+            <!-- ⚠️ SUBSTITUA pelo e-mail real verificável -->
+            E-mail: contato@magreecopart.com.br
+          </div>
+          <span class="foot-status"><span class="dot" aria-hidden="true"></span> Empresa ativa e regularmente registrada nos órgãos competentes</span>
+        </div>
+
+        <div class="foot-col">
+          <h5>Navegação</h5>
+          <a href="#sobre">A empresa</a>
+          <a href="#servicos">O que fazemos</a>
+          <a href="#processo">Como funciona</a>
+          <a href="#contato">Contato</a>
+        </div>
+
+        <div class="foot-col">
+          <h5>Institucional</h5>
+          <button type="button" onclick="openModal('modal-privacidade')">Política de Privacidade (LGPD)</button>
+          <button type="button" onclick="openModal('modal-termos')">Termos de Serviço</button>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>© <span id="ano"></span> Comércio de Sucata Magre Ecopart LTDA — Todos os direitos reservados.</span>
+        <span>CNPJ 66.889.760/0001-00 · Vila Velha / ES</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================= MODAL: PRIVACIDADE ============================= -->
+  <div class="modal-overlay" id="modal-privacidade" role="dialog" aria-modal="true" aria-labelledby="priv-title">
+    <div class="modal">
+      <button class="modal-close" aria-label="Fechar" onclick="closeModal('modal-privacidade')">×</button>
+      <h3 id="priv-title">Política de Privacidade</h3>
+      <p class="modal-sub">Em conformidade com a LGPD (Lei nº 13.709/2018)</p>
+
+      <p>
+        Esta Política de Privacidade descreve como a <strong>Comércio de Sucata Magre Ecopart LTDA</strong>,
+        inscrita no CNPJ sob o nº <strong>66.889.760/0001-00</strong>, trata os dados pessoais coletados
+        por meio deste site, em conformidade com a Lei Geral de Proteção de Dados (LGPD).
+      </p>
+
+      <h4>1. Dados que coletamos</h4>
+      <p>
+        Coletamos os dados que você nos fornece voluntariamente pelo formulário de contato, como
+        nome, e-mail, telefone e o conteúdo da mensagem. Podemos coletar também dados de navegação
+        por meio de cookies, conforme descrito mais abaixo.
+      </p>
+
+      <h4>2. Finalidade do tratamento</h4>
+      <p>Utilizamos esses dados exclusivamente para:</p>
+      <ul>
+        <li>responder às solicitações e dúvidas enviadas;</li>
+        <li>negociar a compra de sucata e prestar informações sobre peças usadas e reciclagem;</li>
+        <li>realizar o atendimento e melhorar a experiência no site.</li>
+      </ul>
+
+      <h4>3. Compartilhamento</h4>
+      <p>
+        Não vendemos nem cedemos seus dados pessoais a terceiros. Eventuais compartilhamentos
+        ocorrem apenas com prestadores estritamente necessários à operação do site ou por exigência legal.
+      </p>
+
+      <h4>4. Cookies</h4>
+      <p>
+        Este site utiliza cookies para melhorar a navegação e, quando aplicável, mensurar audiência.
+        Você pode gerenciar os cookies nas configurações do seu navegador.
+      </p>
+
+      <h4>5. Direitos do titular</h4>
+      <p>
+        Você pode, a qualquer momento, solicitar acesso, correção, portabilidade ou exclusão dos
+        seus dados, bem como revogar o consentimento, pelos canais oficiais informados na seção de contato.
+      </p>
+
+      <h4>6. Contato do controlador</h4>
+      <p>
+        Comércio de Sucata Magre Ecopart LTDA — CNPJ 66.889.760/0001-00 — Rua Eduardo Fairich, 209,
+        Nossa Senhora da Penha, Vila Velha / ES, CEP 29110-100.
+      </p>
+    </div>
+  </div>
+
+  <!-- ======================= MODAL: TERMOS ============================= -->
+  <div class="modal-overlay" id="modal-termos" role="dialog" aria-modal="true" aria-labelledby="term-title">
+    <div class="modal">
+      <button class="modal-close" aria-label="Fechar" onclick="closeModal('modal-termos')">×</button>
+      <h3 id="term-title">Termos de Serviço</h3>
+      <p class="modal-sub">Condições de uso deste site</p>
+
+      <p>
+        Estes Termos de Serviço regulam o uso do site institucional da
+        <strong>Comércio de Sucata Magre Ecopart LTDA</strong>, CNPJ <strong>66.889.760/0001-00</strong>.
+        Ao navegar por este site, você concorda com as condições abaixo.
+      </p>
+
+      <h4>1. Objeto</h4>
+      <p>
+        Este site tem caráter informativo e institucional, apresentando a empresa e suas atividades
+        de comércio de sucatas e resíduos, recuperação de materiais e venda de peças e acessórios
+        usados para veículos. As negociações e condições são tratadas individualmente com o cliente.
+      </p>
+
+      <h4>2. Negociações</h4>
+      <p>
+        As informações deste site não constituem proposta definitiva. Condições de compra e venda,
+        valores e disponibilidade de itens são confirmados diretamente no contato com a empresa,
+        conforme o tipo e a quantidade de material.
+      </p>
+
+      <h4>3. Uso do site</h4>
+      <p>
+        O usuário compromete-se a utilizar o site de forma lícita, abstendo-se de qualquer conduta
+        que possa prejudicar seu funcionamento, sua segurança ou os direitos da empresa e de terceiros.
+      </p>
+
+      <h4>4. Propriedade intelectual</h4>
+      <p>
+        Os conteúdos, marca e identidade visual exibidos neste site pertencem à Comércio de Sucata
+        Magre Ecopart LTDA, sendo vedada a reprodução sem autorização prévia.
+      </p>
+
+      <h4>5. Contato e foro</h4>
+      <p>
+        Dúvidas sobre estes Termos podem ser encaminhadas pelos canais oficiais. Fica eleito o foro
+        da comarca de Vila Velha / ES para dirimir eventuais questões decorrentes destes Termos.
+      </p>
+    </div>
+  </div>
+
+  <!-- ======================= COOKIE BANNER ============================= -->
+  <div class="cookie" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <p>
+      Utilizamos cookies para melhorar sua experiência de navegação. Ao continuar, você concorda
+      com nossa <a onclick="openModal('modal-privacidade')">Política de Privacidade</a>.
+    </p>
+    <div class="cookie-actions">
+      <button class="btn btn-ghost" id="cookie-reject">Recusar</button>
+      <button class="btn btn-primary" id="cookie-accept">Aceitar</button>
+    </div>
+  </div>
+
+  <!-- ======================= JAVASCRIPT ============================= -->
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    /* Menu mobile */
+    var burger = document.getElementById('burger');
+    var menu = document.getElementById('menu');
+    burger.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      });
+    });
+
+    /* Modais */
+    function openModal(id){
+      var el = document.getElementById(id);
+      if(el){ el.classList.add('open'); document.body.style.overflow = 'hidden'; }
     }
+    function closeModal(id){
+      var el = document.getElementById(id);
+      if(el){ el.classList.remove('open'); document.body.style.overflow = ''; }
+    }
+    document.querySelectorAll('.modal-overlay').forEach(function(ov){
+      ov.addEventListener('click', function(e){ if(e.target === ov){ closeModal(ov.id); } });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        document.querySelectorAll('.modal-overlay.open').forEach(function(ov){ closeModal(ov.id); });
+      }
+    });
 
-    render();
+    /* Cookie banner (localStorage) */
+    (function(){
+      var banner = document.getElementById('cookie-banner');
+      var KEY = 'magre_cookie_consent';
+      try {
+        if(!localStorage.getItem(KEY)){ setTimeout(function(){ banner.classList.add('show'); }, 600); }
+      } catch(e){ setTimeout(function(){ banner.classList.add('show'); }, 600); }
+      function dismiss(value){
+        try { localStorage.setItem(KEY, value); } catch(e){}
+        banner.classList.remove('show');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function(){ dismiss('accepted'); });
+      document.getElementById('cookie-reject').addEventListener('click', function(){ dismiss('rejected'); });
+    })();
   </script>
 </body>
 </html>
